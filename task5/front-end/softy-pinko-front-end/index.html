@@ -631,12 +631,12 @@
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
       
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <script>
+<script>
     $(function() {
         $.ajax({
             type: "GET",
-            url: "http://localhost:5252/api/hello",
-            success: function(data) {
+            url: "/api/hello", // No more http://localhost:5252!
+            success: function (data) {
                 console.log(data);
                 $('#dynamic-content').text(data);
             }
