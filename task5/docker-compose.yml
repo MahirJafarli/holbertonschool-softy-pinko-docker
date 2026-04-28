@@ -1,20 +1,25 @@
 services:
-  # The Back-end service
   back-end:
-    image: softy-pinko-back-end:task4
+    image: softy-pinko-back-end:task5
     build:
       context: ./back-end
       dockerfile: Dockerfile
-    ports:
-      - "5252:5252"
+    # REMOVED ports: "5252:5252" - This hides it from the outside world!
 
-  # The Front-end service
   front-end:
-    image: softy-pinko-front-end:task4
+    image: softy-pinko-front-end:task5
     build:
       context: ./front-end
       dockerfile: Dockerfile
+    # REMOVED ports: "9000:9000"
+
+  proxy:
+    image: softy-pinko-proxy:task5
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile
     ports:
-      - "9000:9000"
+      - "80:80"
     depends_on:
       - back-end
+      - front-end
